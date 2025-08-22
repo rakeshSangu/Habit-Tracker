@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&family=Macondo&family=Playwrite+AU+QLD&family=Qwitcher+Grypen:wght@400;700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+body{
+  height: 100vh;
+}
+
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+header{
+  background-color: rgb(139, 244, 139);
+  text-align: center;
+  padding: 15px 8px;
+}
+.habit-tracker-para{
+   color: rgb(174, 21, 230);
+   font-weight: bold;
+   font-size:28px;
+  font-family: "Lexend Deca", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.tag-line{
+  font-family: "Playwrite AU QLD", cursive;
+  /* font-optical-sizing: auto; */
+  font-weight: 600;
+  font-size: 16px;
+  font-style: normal;
+}
+
+.quotation-container{
+  width: 80%;
+  margin-top: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+#quote-para{
+  font-size: 16px;
+  font-weight: bold;
+  font-family: sans-serif;
+  font-style: italic;
+  line-height: 1.4em;
+}
+.author{
+  color: blueviolet;
+}
+
+
+.form-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  padding-bottom: 0px;
+  flex-wrap: wrap;
+}
+.form-container > input{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  outline-color: violet;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.form-container > input::placeholder{
+  /* font-style: italic; */
+  font-size: 16px;
+  color: grey;
+  font-weight: normal;
+}
+
+.form-container > select{
+  width: 60%;
+  outline-color: violet;
+  border-radius: 5px;
+  margin-right: 15px;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.form-container > select > option{
+  border-radius: 5px;
+  font-weight: 600;
+}
+.form-container > select > option:hover{
+  color: blueviolet;
+  padding: 5px;
+
+}
+.add-btn{
+  flex-grow: 1;
+  padding: 8px;
+  background-color: rgb(225, 167, 242);
+  border-style: none;
+  font-size: 14px;
+  color: black;
+  border-radius: 5px;
+  outline: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+.add-btn:hover {
+  /* background-color: lightgreen; */
+  transform: scale(105%);
+}
+
+
+section{
+   margin: 10px 15px;
+}
+.habits-container{
+  list-style: none;
+  padding-left: 0px;
+  padding-bottom: 6vh;
+}
+.habit-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: aqua;
+  padding: 10px 12px;
+  border-radius: 5px;
+  font-family: "Lexend Deca", sans-serif;
+  border: 1px solid black;
+  margin-bottom: 15px;
+}
+.habit-item:hover{
+  box-shadow: 0px 0px 15px blueviolet;
+}
+
+.checkbox{
+  height: 30px;
+  width: 20px;
+  accent-color: blueviolet;
+  cursor: pointer;
+}
+.habit-para{
+  font-size: 16px;
+  font-weight: bold;
+  max-width: 35%;
+  overflow: auto;
+  cursor: pointer;
+}
+.habit-category{
+  font-size: 16px;
+}
+.streak{
+  font-size: 18px;
+  font-weight: bold;
+}
+.delete-btn{
+  background-color: transparent;
+  color: red;
+  border-style: none;
+  font-size: 22px;
+  padding: 0px 5px;
+  cursor: pointer;
+}
+.delete-btn:hover{
+  background-color: red;
+  color: black;
+  border-radius: 50%;
+}
+.empty-para{
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10%;
+  display: none;
+}
+
+.hide{
+  display: none;
+}
+
+footer{
+  text-align: center;
+  background-color: rgb(247, 209, 243);
+  height: 6vh;
+  align-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+
+.Health {
+  background: #fce4ec;
+}
+
+.Study {
+  background: #e1f5fe; 
+}
+
+.Work {
+  background: #fff8e1; 
+}
+
+.Personal {
+  background: #ffe0b2; 
+}
+
+.Other {
+  background: #ede7f6; 
+}
+
+.quotation-container{
+  padding: 15px;
+  border: 2px solid gold;
+  border-radius: 10px;
+}
+#quote-para{
+
+}
+.author{
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: italic;
+  /* margin-left: 15px; */
+  text-align: right;
+  margin-right: 30px;
+}
+
+.checked-item{
+  outline: 3px solid rgb(146, 238, 146);
+  border-style: none;
+}
+
+.streak-heading{
+  font-size: 20px;
+  text-align: center;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  font-family: "Macondo", cursive;
+  font-weight: bold;
+  font-style: normal;
+  color: #4a148c;               /* Deep purple for trust & focus */
+  margin: 20px 0;               /* Spacing around */
+  letter-spacing: 1px;          /* Slight spacing for elegance */
+  position: relative;  
+}
+.streak-heading::after {
+  content: "";
+  display: block;
+  width: 120px;                  
+  height: 4px;                  
+  background: linear-gradient(#ff8a65, #ba68c8); 
+  margin: 6px auto 0;           
+  border-radius: 5px;           
+}
+
+@media (min-width: 992px){
+  body,footer{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .form-container{
+    justify-content: space-between;
+    align-items: center;
+  }
+  .form-container > input{
+    width: 40%;
+    margin-right: 10px;
+    padding: 10px;
+    margin-bottom: 0px;
+  }
+  .form-container > select{
+    width: 30%;
+    margin-right: 10px;
+    padding: 10.5px;
+  }
+  .add-btn{
+    width: 10%;
+    padding: 12px;
+  }
+  .empty-para{
+    margin-top: 10%;
+  }
+
+}

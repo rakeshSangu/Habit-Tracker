@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Habit Tracker - Build better habits and stay consistent with your daily goals. Track progress, maintain streaks, and achieve personal growth with this simple and motivating habit tracking app.">
+  <link rel="icon" href="https://res.cloudinary.com/dct2c9u8o/image/upload/v1755859115/streak_mjs22t.jpg" >
+  <link rel="stylesheet" href="style.css">
+</link>
+  <title>Habit Tracker</title>
+</head>
+<body>
+  <header>
+    <p class="habit-tracker-para">HABIT TRACKER</p>
+    <p class="tag-line">Your journey to better habits starts here.</p>
+  </header>
+
+  <div class="quotation-container">
+      <p id="quote-para">"The secret to a person's success is found in their daily routine" 
+      </p>
+      <p class="author" id="by-name"> - Rakesh</p>
+  </div>
+
+  <form id="form-container" class="form-container">
+    <input pattern=".*[a-zA-Z].*" id="text-input" required placeholder="Add New habit..." />
+    <select id="category-ele" class="category-select">
+        <option disabled value="">Select Category</option>
+        <option value="Health">Health</option>
+        <option value="Study">Study</option>
+        <option value="Work">Work</option>
+        <option value="Personal">Personal</option>
+        <option value="Other">Other</option>
+    </select>
+    <button title="Add Habit" id="add-btn" class="add-btn">ADD</button>
+  </form>
+
+  <p class="streak-heading">“Your Streak • Your Consistency”</p>
+
+  <section>
+    <ul id="habits-container" class="habits-container">
+      
+    </ul>
+    <p id="empty-para" class="empty-para">Add New Habits...<br/>It’s never too late to start your journey!</p>
+  </section>
+
+  <footer>
+    Made by <a target="_blank" href="https://www.linkedin.com/in/rakeshsangu/">Rakesh Sangu</a>
+  </footer>
+
+  <script src="script.js  "></script>
+</body>
+</html>
