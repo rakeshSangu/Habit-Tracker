@@ -250,7 +250,6 @@ function renderHabits() {
     } else {
         emptyPara.style.display = "none"
     }
-    console.log(habitsList)
 }
 
 
