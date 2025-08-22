@@ -9,39 +9,108 @@ let emptyPara = document.getElementById("empty-para")
 let quotePara = document.getElementById("quote-para")
 let authorName = document.getElementById("by-name")
 
-const quotesList = [
-  { quote: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.", author: "Aristotle" },
-  { quote: "Motivation is what gets you started. Habit is what keeps you going.", author: "Jim Ryun" },
-  { quote: "Successful people are simply those with successful habits.", author: "Brian Tracy" },
-  { quote: "Good habits formed at youth make all the difference.", author: "Aristotle" },
-  { quote: "Your habits will determine your future.", author: "Jack Canfield" },
-  { quote: "Small habits build up to big changes over time.", author: "Anonymous" },
-  { quote: "The secret to your success is found in your daily routine.", author: "John C. Maxwell" },
-  { quote: "You’ll never change your life until you change something you do daily.", author: "Mike Murdock" },
-  { quote: "Good habits are worth being fanatical about.", author: "John Irving" },
-  { quote: "Drop by drop is the water pot filled.", author: "Buddha" },
-  { quote: "The chains of habit are too weak to be felt until they are too strong to be broken.", author: "Samuel Johnson" },
-  { quote: "Your net worth to the world is usually determined by what remains after your bad habits are subtracted from your good ones.", author: "Benjamin Franklin" },
-  { quote: "Habits change into character.", author: "Ovid" },
-  { quote: "Depending on what they are, our habits will either make us or break us.", author: "Sean Covey" },
-  { quote: "We first make our habits, and then our habits make us.", author: "John Dryden" },
-  { quote: "Good habits save us from ourselves; bad habits are chains that bind us.", author: "Anonymous" },
-  { quote: "Motivation gets you going, but discipline keeps you growing.", author: "John C. Maxwell" },
-  { quote: "Winning is a habit. Unfortunately, so is losing.", author: "Vince Lombardi" },
-  { quote: "The difference between an amateur and a professional is in their habits.", author: "Steven Pressfield" },
-  { quote: "Excellence is not an exception, it is a prevailing attitude.", author: "Colin Powell" }
+const quotesList = [{
+        quote: "We are what we repeatedly do. Excellence, then, is not an act, but a habit.",
+        author: "Aristotle"
+    },
+    {
+        quote: "Motivation is what gets you started. Habit is what keeps you going.",
+        author: "Jim Ryun"
+    },
+    {
+        quote: "Successful people are simply those with successful habits.",
+        author: "Brian Tracy"
+    },
+    {
+        quote: "Good habits formed at youth make all the difference.",
+        author: "Aristotle"
+    },
+    {
+        quote: "Your habits will determine your future.",
+        author: "Jack Canfield"
+    },
+    {
+        quote: "Small habits build up to big changes over time.",
+        author: "Anonymous"
+    },
+    {
+        quote: "The secret to your success is found in your daily routine.",
+        author: "John C. Maxwell"
+    },
+    {
+        quote: "You’ll never change your life until you change something you do daily.",
+        author: "Mike Murdock"
+    },
+    {
+        quote: "Good habits are worth being fanatical about.",
+        author: "John Irving"
+    },
+    {
+        quote: "Drop by drop is the water pot filled.",
+        author: "Buddha"
+    },
+    {
+        quote: "The chains of habit are too weak to be felt until they are too strong to be broken.",
+        author: "Samuel Johnson"
+    },
+    {
+        quote: "Your net worth to the world is usually determined by what remains after your bad habits are subtracted from your good ones.",
+        author: "Benjamin Franklin"
+    },
+    {
+        quote: "Habits change into character.",
+        author: "Ovid"
+    },
+    {
+        quote: "Depending on what they are, our habits will either make us or break us.",
+        author: "Sean Covey"
+    },
+    {
+        quote: "We first make our habits, and then our habits make us.",
+        author: "John Dryden"
+    },
+    {
+        quote: "Good habits save us from ourselves; bad habits are chains that bind us.",
+        author: "Anonymous"
+    },
+    {
+        quote: "Motivation gets you going, but discipline keeps you growing.",
+        author: "John C. Maxwell"
+    },
+    {
+        quote: "Winning is a habit. Unfortunately, so is losing.",
+        author: "Vince Lombardi"
+    },
+    {
+        quote: "The difference between an amateur and a professional is in their habits.",
+        author: "Steven Pressfield"
+    },
+    {
+        quote: "Excellence is not an exception, it is a prevailing attitude.",
+        author: "Colin Powell"
+    }
 ];
 
-let index = Math.floor(Math.random()*(quotesList.length))
+let initialList = [{
+    id: 1,
+    title: "Drink Water",
+    category: "Health",
+    datesList: []
+}, ]
+
+let savedList = localStorage.getItem("savedHabits")
+let habitsList = savedList === null ? initialList : JSON.parse(savedList)
+
+let index = Math.floor(Math.random() * (quotesList.length))
 quotePara.textContent = `"${quotesList[index].quote}"`
 authorName.textContent = `- ${quotesList[index].author}`
 
-formEle.addEventListener("submit",(event) => {
+formEle.addEventListener("submit", (event) => {
     event.preventDefault()
     let inputtitle = textInputEle.value.trim()
-    let inputCategory = categorySelectEle.value 
+    let inputCategory = categorySelectEle.value
     const newHabit = {
-        id: habitsList.length ? habitsList[habitsList.length-1].id + 1 : 1 ,
+        id: habitsList.length ? habitsList[habitsList.length - 1].id + 1 : 1,
         title: inputtitle,
         category: inputCategory,
         datesList: []
@@ -49,90 +118,87 @@ formEle.addEventListener("submit",(event) => {
     habitsList.push(newHabit)
     textInputEle.value = ""
     categorySelectEle.value = "Health"
-    localStorage.setItem("savedHabits",habitsList)
+    localStorage.setItem("savedHabits", JSON.stringify(habitsList))
     renderHabits()
 })
 
 
-function deleteHabit(id){
-    habitsList = habitsList.filter(each => each.id != id)
-    localStorage.setItem("savedHabits",JSON.stringify(habitsList))
+function deleteHabit(id) {
+    habitsList = habitsList.filter(each => each.id !== id)
+    localStorage.setItem("savedHabits", JSON.stringify(habitsList))
     renderHabits()
 }
 
 
-function getStringDate(date){
+function getStringDate(date) {
     let day = date.getDate()
-    let month = date.getMonth()+1
+    let month = date.getMonth() + 1
     let year = date.getFullYear()
 
     return `${day<10 ? ("0"+day) : day}/${month<10 ? ("0"+month) : month}/${year}`
 }
 
 
-function changeCheckBoxStatus(id){
+function changeCheckBoxStatus(id) {
     // let checkboxEle = document.getElementById(`checkbox${id}`)
-    let currDate = getStringDate(new Date)
+    let currDate = getStringDate(new Date())
     habitsList = habitsList.map(each => {
-        if(each.id == id){
-            if(each.datesList.includes(currDate)){ //unchecked habit
-                return ({...each,
+        if (each.id === id) {
+            if (each.datesList.includes(currDate)) { //unchecked habit
+                return ({
+                    ...each,
                     datesList: each.datesList.filter(date => date !== currDate)
                 })
-            }else{ //checked habit
-                return ({...each,
-                    datesList: [...each.datesList,currDate]
+            } else { //checked habit
+                return ({
+                    ...each,
+                    datesList: [...each.datesList, currDate]
                 })
             }
-        }else{
+        } else {
             return each
         }
     })
-    
-    localStorage.setItem("savedHabits",JSON.stringify(habitsList))
+
+    localStorage.setItem("savedHabits", JSON.stringify(habitsList))
     renderHabits()
 }
 
 
-let savedList = localStorage.getItem("savedHabits")
-let habitsList = savedList === null ? [
-    {   
-        id: 1,
-        title: "Drink Water",
-        category: "Health",
-        datesList: []
-    },
-] : JSON.parse(savedList)
 
 
-
-function getStreakCount(datesList){
+function getStreakCount(datesList) {
     let curr = new Date();
-    count = 0
-    while(true){
-        if(datesList.includes(getStringDate(curr))){
+    let count = 0
+    while (true) {
+        if (datesList.includes(getStringDate(curr))) {
             count += 1
-        }else{
+        } else {
             break
         }
         curr = new Date(curr - 1000 * 60 * 60 * 24)
     }
     return count
-    
+
 }
 
 
 
 
-function createHabits(habit){
-    let {id,title,category,datesList} = habit
+function createHabits(habit) {
+    let {
+        id,
+        title,
+        category,
+        datesList
+    } = habit
 
     let checkedStatus = datesList.length ? datesList.includes(getStringDate(new Date())) : false;
 
     let habitItem = document.createElement("li")
     habitsListContainer.appendChild(habitItem)
-    habitItem.classList.add("habit-item",category);
-    if(checkedStatus){
+    habitItem.classList.add("habit-item", category);
+    if (checkedStatus) {
         habitItem.classList.add("checked-item")
     }
 
@@ -144,7 +210,7 @@ function createHabits(habit){
     checkBoxEle.type = "checkbox"
     checkBoxEle.id = `checkbox${id}`
     checkBoxEle.checked = checkedStatus;
-    checkBoxEle.addEventListener("change",() => changeCheckBoxStatus(habit.id))
+    checkBoxEle.addEventListener("change", () => changeCheckBoxStatus(habit.id))
 
     let paraEle = document.createElement("label")
     habitItem.append(paraEle)
@@ -158,7 +224,7 @@ function createHabits(habit){
     categoryPara.textContent = `(${category})`
     categoryPara.classList.add("habit-category")
     categoryPara.htmlFor = `checkbox${habit.id}`
-    
+
 
     let streakPara = document.createElement("p")
     habitItem.append(streakPara)
@@ -174,18 +240,14 @@ function createHabits(habit){
 }
 
 
-function renderEmptyListsView(){
-
-}
-
-function renderHabits(){
+function renderHabits() {
     habitsListContainer.innerHTML = ""
     habitsList.forEach((habit) => {
         createHabits(habit)
     })
-    if(habitsList.length===0){
+    if (habitsList.length === 0) {
         emptyPara.style.display = "block"
-    }else{
+    } else {
         emptyPara.style.display = "none"
     }
     console.log(habitsList)
