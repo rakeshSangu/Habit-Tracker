@@ -169,7 +169,8 @@ function changeCheckBoxStatus(id) {
 
 function getStreakCount(datesList) {
     let curr = new Date();
-    let count = 0
+    let count = datesList.includes(getStringDate(curr)) ? 1 : 0;
+    curr = new Date(curr - 1000 * 60 * 60 * 24)
     while (true) {
         if (datesList.includes(getStringDate(curr))) {
             count += 1
